@@ -1,0 +1,17 @@
+tasks:
+  - name: Config Git
+    command: rm -rf ~/.gitconfig && git clone https://gist.github.com/8963dd086da31cd752d4696b8600999d.git gitconfig_test_folder && cp -r ./gitconfig_test_folder/.gitconfig ~/ && rm -rf gitconfig_test_folder && exit
+
+  - name: Adding global dependencies
+    command: npm i -g nodemon ts-node 
+
+vscode:
+  extensions:
+    - dracula-theme.theme-dracula
+    - PKief.material-icon-theme
+    - naumovs.color-highlight
+
+ports:
+  - port: 3000
+    onOpen: notify
+    visibility: public
