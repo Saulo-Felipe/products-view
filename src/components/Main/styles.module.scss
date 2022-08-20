@@ -1,0 +1,21 @@
+.container {
+  border: solid 1px red;
+  padding: 0.75rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.inputContainer {
+  border: solid 1px red;
+  padding: 0.5rem;
+
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+}
