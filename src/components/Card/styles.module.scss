@@ -28,12 +28,11 @@
 .info {
   padding: .5rem;
   border: solid 1px red;
-}
 
-.info .title {
-  font-weight: 500;
+  .title {
+    font-weight: 500;
+  }
 }
-
 
 
 .button {
@@ -46,11 +45,12 @@
   justify-content: center;
   max-height: 10rem;
   min-height: max-content;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 }
 
-.button:hover {
-  filter: brightness(0.9);
-}
 
 .btnTitle {
 
