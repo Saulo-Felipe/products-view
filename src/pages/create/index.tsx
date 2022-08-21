@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import styles from "./styles.module.scss";
-import { cloudinary } from "../../services/cloudinary";
 import axios from "axios";
 import { useState } from "react";
-import { GetServerSideProps } from "next";
+import Link from "next/link";
 
-export default function createProduct() {
+export default function CreateProduct() {
   const { handleSubmit, register } = useForm();
   const [loading, setLoading] = useState(false);
 
@@ -23,8 +22,6 @@ export default function createProduct() {
     );
 
     const { data: response } = await api.post("/createProduct", {...params, image_url: data.url});
-
-    console.log("resp: ", response);
     
     if (response.success) { 
       alert("Produto cadastrado.");
@@ -49,7 +46,12 @@ export default function createProduct() {
 
         <div className={styles.formControl}>
           <label>Imagem da capa</label>
-          <input type={"file"} {...register("image_url", { required: true })} />
+          <input type={"file"} {...register("image_url", { required: true })} accept={"image/*"}/>
+        </div>
+
+        <div className={styles.formControl}>
+          <label>Link para compra</label>
+          <input placeholder={"Link da shopee ou aliexpress"} type={"text"} {...register("purchase_link", { required: true })} />
         </div>
 
         <div className={styles.formControl}>
@@ -67,7 +69,14 @@ export default function createProduct() {
         >
           {loading ? "Carregando..." : "Finalizar cadastro"}
         </button>
+
+        <div className="navigation">
+          <div>NAVEGAÇÃO:</div> 
+          <Link href={"/"}>Home</Link>
+          <Link href={"/delete"}>Página de deletar</Link>
+        </div>
       </form>
+
     </div>
   );
 }

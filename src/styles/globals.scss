@@ -13,6 +13,19 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+}
+
+.navigation {
+  margin: 2rem 0;
+
+  a {
+    display: block;
+    padding: 0.1rem;
+    margin-top: 0.3rem;
+    color: blue;
+    text-decoration: underline;
+  }
 }
 
 @media (max-width: 1080px) {

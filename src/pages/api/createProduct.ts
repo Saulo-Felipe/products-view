@@ -6,20 +6,22 @@ interface CreateProductBody {
   image_url: string;
   title: string;
   type: number | string;
+  purchase_link: string;
 }
 
 export default async function createProduct(request: NextApiRequest, response: NextApiResponse) {
   try {
     if (request.method === "POST") {
-      let { image_url, title, type }: CreateProductBody = request.body;
+      let { image_url, title, type, purchase_link }: CreateProductBody = request.body;
       type = Number(String(type)[0]);
       
       await sequelize.query(`
-        INSERT INTO products (image_url, title, type)
+        INSERT INTO products (image_url, title, type, purchase_link)
         VALUES (
           '${image_url}', 
           '${title}', 
-          '${type}'
+          '${type}',
+          '${purchase_link}'
         );
       `);
   

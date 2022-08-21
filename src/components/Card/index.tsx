@@ -1,23 +1,32 @@
+import { Product } from "../Main";
+
 import styles from "./styles.module.scss";
 
-export function Card() {
+export function Card({ id, image_url, title, type, purchase_link }: Product) {
   
   return (
     <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <img src={"/me.jpeg"} />
-      </div>
+      <div className={styles.header}>
+        <div className={styles.imageContainer}>
+          <img src={image_url} />
 
-      <div className={styles.info}>
-        <div className={styles.title}>
-          Lampada automatica de rotação de 20px 
-        </div> 
-      </div>
+          <hr />
+        </div>
 
-      <button className={styles.button}>
-        <img src={"/shopee.png"} className={styles.btnImage} />
-        <div className={styles.btnText}>Comprar na {"<shopee>"}</div>
-      </button>
+        
+        <div className={styles.info}>
+          <h3 className={styles.title}>
+            {title}
+          </h3> 
+        </div>
+      </div>
+      
+      <a href={purchase_link} target="__blank">
+        <button className={styles.button}>
+          <div className={styles.btnText}>Ir para {type == 1 ? "Shopee" : "Aliexpress"}</div>
+          <img src={type == 1 ? "/shopee.png" : "/aliexpress.webp"} className={styles.btnImage} />
+        </button>
+      </a>
     </div>
   );
 }

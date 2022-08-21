@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Product } from "../../components/Main";
 import { api } from "../../services/api";
@@ -36,6 +37,11 @@ export default function Delete() {
 
   return (
     <div className={styles.container}>
+        <div className="navigation">
+          <div>NAVEGAÇÃO:</div> 
+          <Link href={"/"}>Home</Link>
+          <Link href={"/create"}>Página de criar</Link>
+        </div>
 
       {
         allProducts.map(item => 
@@ -52,6 +58,9 @@ export default function Delete() {
             >Remover</button>
           </div>
         )
+      }
+      {
+        allProducts.length == 0 ? <div>Nenhum produto cadastrado</div> : ""
       }
     </div>
   );
